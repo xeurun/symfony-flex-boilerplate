@@ -1,0 +1,81 @@
+version: '3.5'
+networks:
+  frontend:
+    external: true
+  backend:
+    external: true
+  local:
+    internal: true
+volumes:
+  app:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ${PROJECT_HOME_DIR}
+  app_logs_nginx:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ${PROJECT_HOME_DIR}/docker/volumes/app_logs/nginx
+  app_data_mysql:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ${PROJECT_HOME_DIR}/docker/volumes/app_data/mysql
+  app_data_nginx:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ${PROJECT_HOME_DIR}/docker/volumes/app_data/nginx
+services:
+# MYSQL
+  mysql:
+    build:
+      context: ./docker/services/mysql
+      dockerfile: Dockerfile
+    networks:
+      - local
+    ports:
+      - "3366:3306"
+    volumes:
+      - app_data_mysql:/var/lib/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: 1234
+       MYSQL_DATABASE: app
+       MYSQL_USER: app
+       MYSQL_PASSWORD: app
+    restart: always
+# PHP
+  php:
+    build:
+      context: ./docker/services/php
+      dockerfile: Dockerfile
+    networks:
+      - frontend
+      - backend
+      - local
+    depends_on:
+      - mysql
+    ports:
+      - "8000:80"
+    volumes:
+      - app:/app
+    environment:
+      PRIVATE_KEY_PATH: ${PRIVATE_KEY_PATH}
+      PUBLIC_KEY_PATH: ${PUBLIC_KEY_PATH}
+    restart: always
+# NGINX
+  nginx:
+    build:
+      context: ./docker/services/nginx
+      dockerfile: Dockerfile
+    networks:
+      - frontend
+      - backend
+      - local
+    depends_on:
+      - php
+    ports:
+      - "8080:80"
+      - "4443:443"
+    volumes:
+      - app:/app
+      - app_logs_nginx:/app_logs
+      - app_data_nginx:/app_data
+    restart: always

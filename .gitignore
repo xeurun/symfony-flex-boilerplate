@@ -1,0 +1,26 @@
+###> env ###
+.env
+.sonarlint
+###< env ###
+
+###> vscode ###
+.vscode
+###< vscode ###
+
+###> symfony/framework-bundle ###
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> docker ###
+/docker/volumes/app_data/
+/docker/volumes/app_logs/
+!/docker/volumes/app_data/mysql/.gitkeep
+!/docker/volumes/app_data/nginx/.gitkeep
+!/docker/volumes/app_logs/nginx/.gitkeep
+###< docker ###
+
+###> symfony/web-server-bundle ###
+.web-server-pid
+###< symfony/web-server-bundle ###
