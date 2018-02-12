@@ -1,6 +1,6 @@
 # Project
 
-[Docker docs](docker/README.md) - docker description
+[Docker docs](/.docker/README.md) - docker description
 
 ## Prepare workstation
 
@@ -35,12 +35,12 @@ Copy `.env.dist` to `.env` and set your need value
 
 Note: first step only for recreate of first time create project!
 
-1. `docker-compose exec php composer create-project symfony/website-skeleton my-project`
-1. `docker-compose exec php composer install`
+1. `docker-compose exec --user www-data php composer create-project symfony/website-skeleton /app/`
+1. `docker-compose exec --user www-data php composer install` or `docker-compose exec php composer install --no-dev`
 
 ## Start server
 
-`docker-compose exec php bin/console server:start 0.0.0.0:80`
+`docker-compose exec --user www-data php bin/console server:start 0.0.0.0:80`
 
 ## Go
 

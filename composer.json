@@ -1,21 +1,50 @@
 {
-    "name": "app",
+    "name": "app/app",
     "description": "app description",
     "type": "project",
-    "license": "proprietary",
+    "keywords": [],
+    "version": "1.0.0",
+    "time": "2018-02-12 00:00:00",
+    "homepage": "https://example.com",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Alex Stepankov",
+            "email": "xeurun@yahoo.com",
+            "homepage": "https://xeurun.github.io/",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "example@example.com",
+        "issues": "https://example.com",
+        "forum": "https://example.com",
+        "wiki": "https://example.com",
+        "irc": "https://example.com",
+        "source": "https://example.com",
+        "docs": "https://example.com",
+        "rss": "https://example.com"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "require": {
-        "php": "^7.2.0",
+        "php": "^7.1.3",
         "ext-iconv": "*",
+        "ext-mbstring": "*",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "roave/security-advisories": "dev-master"
     },
     "require-dev": {
         "symfony/dotenv": "^4.0",
         "symfony/web-server-bundle": "^4.0"
     },
+    "provide": {},
+    "suggest": {},
+    "repositories": {},
     "config": {
         "preferred-install": {
             "*": "dist"
@@ -46,7 +75,8 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "post-autoload-dump": "curl -s -H \"Accept: text/plain\" https://security.sensiolabs.org/check_lock -F lock=@composer.lock"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -56,5 +86,8 @@
             "id": "01C5VX6A4BQTTQGJYB6XGVSECB",
             "allow-contrib": false
         }
-    }
+    },
+    "bin": [],
+    "archive": {},
+    "non-feature-branches": []
 }

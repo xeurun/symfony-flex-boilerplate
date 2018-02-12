@@ -14,20 +14,20 @@ volumes:
   app_logs_nginx:
     driver: local-persist
     driver_opts:
-      mountpoint: ${PROJECT_HOME_DIR}/docker/volumes/app_logs/nginx
+      mountpoint: ${PROJECT_HOME_DIR}/.docker/volumes/app_logs/nginx
   app_data_mysql:
     driver: local-persist
     driver_opts:
-      mountpoint: ${PROJECT_HOME_DIR}/docker/volumes/app_data/mysql
+      mountpoint: ${PROJECT_HOME_DIR}/.docker/volumes/app_data/mysql
   app_data_nginx:
     driver: local-persist
     driver_opts:
-      mountpoint: ${PROJECT_HOME_DIR}/docker/volumes/app_data/nginx
+      mountpoint: ${PROJECT_HOME_DIR}/.docker/volumes/app_data/nginx
 services:
 # MYSQL
   mysql:
     build:
-      context: ./docker/services/mysql
+      context: ./.docker/services/mysql
       dockerfile: Dockerfile
     networks:
       - local
@@ -44,7 +44,7 @@ services:
 # PHP
   php:
     build:
-      context: ./docker/services/php
+      context: ./.docker/services/php
       dockerfile: Dockerfile
     networks:
       - frontend
@@ -63,7 +63,7 @@ services:
 # NGINX
   nginx:
     build:
-      context: ./docker/services/nginx
+      context: ./.docker/services/nginx
       dockerfile: Dockerfile
     networks:
       - frontend

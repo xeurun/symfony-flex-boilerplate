@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y git
 
 COPY /etc/php/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-ADD $PRIVATE_KEY_PATH ~/.ssh/id_rsa
-ADD $PUBLIC_KEY_PATH ~/.ssh/id_rsa.pub
+ADD $PRIVATE_KEY_PATH /root/.ssh/id_rsa
+ADD $PUBLIC_KEY_PATH /root/.ssh/id_rsa.pub
 
 WORKDIR "/app"
