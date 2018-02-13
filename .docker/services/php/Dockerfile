@@ -10,7 +10,4 @@ RUN apt-get update && apt-get install -y git
 
 COPY /etc/php/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-ADD "~/.ssh/id_rsa" "/root/.ssh/id_rsa"
-ADD "~/.ssh/id_rsa.pub" "/root/.ssh/id_rsa.pub"
-
 WORKDIR "/app"

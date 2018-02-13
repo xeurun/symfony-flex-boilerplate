@@ -7,6 +7,10 @@ networks:
   local:
     internal: true
 volumes:
+  ssh:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ${SSH_DIR}
   app:
     driver: local-persist
     driver_opts:
@@ -89,4 +93,4 @@ services:
     volumes:
       - app:/app
       - app_data_composer:/tmp
-      - ~/.ssh:/root/.ssh
+      - ssh:/root/.ssh
