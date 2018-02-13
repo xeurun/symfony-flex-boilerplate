@@ -15,10 +15,12 @@
     * etc
       * php
         * php-fpm.d - override php-fpm www.conf file
+  * composer
 * volumes - docker volumes
   * app_data
     * mysql - mysql data files
     * nginx - nginx data files
+    * composer - composer data files
   * app_logs
     * nginx - nginx and nginx app logs file
 
@@ -29,3 +31,5 @@
 ### php-fpm
 
 ### nginx
+
+### composer
