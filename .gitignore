@@ -19,6 +19,7 @@
 /.docker/volumes/app_logs/
 !/.docker/volumes/app_data/mysql/.gitkeep
 !/.docker/volumes/app_data/nginx/.gitkeep
+!/.docker/volumes/app_data/composer/.gitkeep
 !/d.ocker/volumes/app_logs/nginx/.gitkeep
 ###< docker ###
 

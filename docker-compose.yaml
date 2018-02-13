@@ -19,6 +19,10 @@ volumes:
     driver: local-persist
     driver_opts:
       mountpoint: ${PROJECT_HOME_DIR}/.docker/volumes/app_data/mysql
+  app_data_composer:
+    driver: local-persist
+    driver_opts:
+      mountpoint: ${PROJECT_HOME_DIR}/.docker/volumes/app_data/composer
   app_data_nginx:
     driver: local-persist
     driver_opts:
@@ -56,9 +60,6 @@ services:
       - "8000:80"
     volumes:
       - app:/app
-    environment:
-      PRIVATE_KEY_PATH: ${PRIVATE_KEY_PATH}
-      PUBLIC_KEY_PATH: ${PUBLIC_KEY_PATH}
     restart: always
 # NGINX
   nginx:
@@ -79,3 +80,13 @@ services:
       - app_logs_nginx:/app_logs
       - app_data_nginx:/app_data
     restart: always
+# Composer
+  composer:
+    image: composer:latest
+    environment:
+       PW: /app
+       COMPOSER_HOME: /tmp
+    volumes:
+      - app:/app
+      - app_data_composer:/tmp
+      - ~/.ssh:/root/.ssh
