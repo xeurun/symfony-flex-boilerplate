@@ -42,13 +42,14 @@ Copy `.env.dist` to `.env` and set your need value
 
 ## Start containers
 
-* `docker-compose up -d` or `docker-compose up`
+* `make up` or `docker-compose up`
 
 ## Init project
 
-1. `docker-compose run --rm composer composer install` or `docker-compose run --rm composer composer install --no-dev`
+1. `make composer c=install` or `make composer c=install --no-dev`
 
 ## Example - start server
 
-* `docker-compose exec --user www-data php bin/console server:start 0.0.0.0:80`
+
+* `make server-start p=80`
 * Open `http://<your_docker/localhost_ip>:8080`
