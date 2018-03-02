@@ -1,5 +1,15 @@
 # Docker
 
+## Services
+
+### mysql
+
+### php-fpm
+
+### nginx
+
+### composer
+
 ## Structure
 
 * services - docker-compose services
@@ -23,13 +33,3 @@
     * composer - composer data files
   * app_logs
     * nginx - nginx and nginx app logs file
-
-## Services
-
-### mysql
-
-### php-fpm
-
-### nginx
-
-### composer

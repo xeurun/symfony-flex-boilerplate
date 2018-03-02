@@ -51,4 +51,4 @@ Copy `.env.dist` to `.env` and set your need value
 ## Example - start server
 
 * `docker-compose exec --user www-data php bin/console server:start 0.0.0.0:80`
-* Open `http://192.168.99.100:8000`
+* Open `http://<your_docker/localhost_ip>:8080`

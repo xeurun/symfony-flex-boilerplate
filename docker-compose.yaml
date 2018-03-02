@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3.6'
 networks:
   frontend:
     external: true
@@ -6,6 +6,8 @@ networks:
     external: true
   local:
     internal: true
+    ipv4_address: 172.24.0.1
+
 volumes:
   ssh:
     driver: local-persist
@@ -55,8 +57,6 @@ services:
       context: ./.docker/services/php
       dockerfile: Dockerfile
     networks:
-      - frontend
-      - backend
       - local
     depends_on:
       - mysql
